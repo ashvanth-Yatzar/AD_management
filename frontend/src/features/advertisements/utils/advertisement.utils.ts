@@ -45,8 +45,22 @@ export const PLAN_OPTIONS: { value: PlanType; label: string }[] = (
   Object.entries(PLAN_LABELS) as [PlanType, string][]
 ).map(([value, label]) => ({ value, label }));
 
-export function getImageUrl(imagePath: string | null | undefined): string | null {
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  "https://ad-management-73ka.onrender.com";
+
+export function getImageUrl(
+  imagePath: string | null | undefined
+): string | null {
   if (!imagePath) return null;
-  if (imagePath.startsWith("http")) return imagePath;
-  return `/${imagePath.replace(/^\//, "")}`;
+
+  if (imagePath.startsWith("http")) {
+    return imagePath;
+  }
+
+  const cleanPath = imagePath.startsWith("/")
+    ? imagePath
+    : `/${imagePath}`;
+
+  return `${BACKEND_URL}${cleanPath}`;
 }

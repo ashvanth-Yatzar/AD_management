@@ -5,7 +5,6 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 import { Edit, Trash2, ImageIcon, Link2 } from "lucide-react";
-
 import type { Advertisement } from "@/features/advertisements/types/advertisement.types";
 import {
   STATUS_LABELS,
