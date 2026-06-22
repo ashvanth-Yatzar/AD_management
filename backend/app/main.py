@@ -54,6 +54,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+print("CORS ORIGINS:", settings.get_cors_origins())
+
 # ── Static files (uploaded images) ────────────────────────────────────────
 uploads_path = Path(settings.UPLOAD_DIR)
 uploads_path.mkdir(parents=True, exist_ok=True)
